@@ -68,7 +68,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /*Variables. I used these for widths, fonts, etc.
-Nesting. I nested list items within several different divs.
+Nesting. I nested list items for my menu bar
 Partials. We'll use this feature with custom fonts, explained below.
 Mixins. I just used the border-radius mixin from the SASS guide to style two different items (nav links and submit button).
 Inheritance. I used this for some divs and header styling.
@@ -102,32 +102,33 @@ body {
 
 /* line 71, ../sass/screen.scss */
 #header {
+  height: 70px;
   background-color: orange;
 }
 
-/* line 76, ../sass/screen.scss */
+/* line 77, ../sass/screen.scss */
 html, body {
   height: 100%;
 }
 
-/* line 80, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 #sidebar {
   float: right;
 }
 
-/* line 83, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 #wrap {
   min-height: 100%;
 }
 
-/* line 87, ../sass/screen.scss */
+/* line 88, ../sass/screen.scss */
 #container {
   overflow: auto;
   padding-bottom: 50px;
 }
 
 /* must be same height as the footer */
-/* line 92, ../sass/screen.scss */
+/* line 93, ../sass/screen.scss */
 #footer {
   position: relative;
   margin-top: -50px;
@@ -138,19 +139,19 @@ html, body {
   background-color: orange;
 }
 
-/* line 100, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 #menu {
   background-color: #FFD700;
   height: 200px;
   width: 100px;
 }
 
-/* line 106, ../sass/screen.scss */
+/* line 107, ../sass/screen.scss */
 #login {
   width: 200px;
 }
 
-/* line 110, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 #content {
   height: auto;
   width: auto;

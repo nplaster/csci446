@@ -6,7 +6,7 @@
 @import "compass/reset";
 
 /*Variables. I used these for widths, fonts, etc.
-Nesting. I nested list items within several different divs.
+Nesting. I nested list items for my menu bar
 Partials. We'll use this feature with custom fonts, explained below.
 Mixins. I just used the border-radius mixin from the SASS guide to style two different items (nav links and submit button).
 Inheritance. I used this for some divs and header styling.
@@ -69,6 +69,7 @@ body{
 
 //make  header the same color as the footer using variables
 #header {
+    height: 70px;
     background-color: $header-footer-color;
 }
 
