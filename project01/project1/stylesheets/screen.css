@@ -105,30 +105,37 @@ body {
   height: 70px;
   background-color: orange;
 }
-
-/* line 77, ../sass/screen.scss */
-html, body {
-  height: 100%;
+/* line 74, ../sass/screen.scss */
+#header h1, #header button {
+  margin-top: 20px;
+  float: left;
 }
 
 /* line 81, ../sass/screen.scss */
+html, body {
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 100%;
+}
+
+/* line 87, ../sass/screen.scss */
 #sidebar {
   float: right;
 }
 
-/* line 84, ../sass/screen.scss */
+/* line 90, ../sass/screen.scss */
 #wrap {
   min-height: 100%;
 }
 
-/* line 88, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 #container {
   overflow: auto;
   padding-bottom: 50px;
 }
 
 /* must be same height as the footer */
-/* line 93, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 #footer {
   position: relative;
   margin-top: -50px;
@@ -139,19 +146,19 @@ html, body {
   background-color: orange;
 }
 
-/* line 101, ../sass/screen.scss */
+/* line 107, ../sass/screen.scss */
 #menu {
   background-color: #FFD700;
   height: 200px;
   width: 100px;
 }
 
-/* line 107, ../sass/screen.scss */
+/* line 113, ../sass/screen.scss */
 #login {
   width: 200px;
 }
 
-/* line 111, ../sass/screen.scss */
+/* line 117, ../sass/screen.scss */
 #content {
   height: auto;
   width: auto;
