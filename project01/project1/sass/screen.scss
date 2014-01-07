@@ -72,25 +72,35 @@ body{
     background-color: $header-footer-color;
 }
 
-#footer {
-    background-color: $header-footer-color;
-    clear:both;
-    text-align:center;
+//css
+html, body{
+    height: 100%;
 }
 
-//css
 #sidebar{
     float:right;
 }
+#wrap {
+    min-height: 100%;
+}
 
+#container {
+    overflow:auto;
+    padding-bottom: 50px;
+}  /* must be same height as the footer */
+
+#footer {
+    position: relative;
+    margin-top: -50px; /* negative value of footer height */
+    height: 50px;
+    clear: both;
+    text-align:center;
+    background-color: $header-footer-color;
+}
 #menu{
     background-color:#FFD700;
     height:200px;
     width:100px;
-}
-#container {
-    width:100%;
-    height:100%;
 }
 
 #login {

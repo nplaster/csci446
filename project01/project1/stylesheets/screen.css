@@ -105,37 +105,52 @@ body {
   background-color: orange;
 }
 
-/* line 75, ../sass/screen.scss */
-#footer {
-  background-color: orange;
-  clear: both;
-  text-align: center;
+/* line 76, ../sass/screen.scss */
+html, body {
+  height: 100%;
 }
 
-/* line 82, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 #sidebar {
   float: right;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 83, ../sass/screen.scss */
+#wrap {
+  min-height: 100%;
+}
+
+/* line 87, ../sass/screen.scss */
+#container {
+  overflow: auto;
+  padding-bottom: 50px;
+}
+
+/* must be same height as the footer */
+/* line 92, ../sass/screen.scss */
+#footer {
+  position: relative;
+  margin-top: -50px;
+  /* negative value of footer height */
+  height: 50px;
+  clear: both;
+  text-align: center;
+  background-color: orange;
+}
+
+/* line 100, ../sass/screen.scss */
 #menu {
   background-color: #FFD700;
   height: 200px;
   width: 100px;
 }
 
-/* line 91, ../sass/screen.scss */
-#container {
-  width: 100%;
-  height: 100%;
-}
-
-/* line 96, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 #login {
   width: 200px;
 }
 
-/* line 100, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 #content {
   height: auto;
   width: auto;
