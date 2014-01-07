@@ -1,0 +1,53 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+/*Variables. I used these for widths, fonts, etc.
+Nesting. I nested list items within several different divs.
+Partials. We'll use this feature with custom fonts, explained below.
+Mixins. I just used the border-radius mixin from the SASS guide to style two different items (nav links and submit button).
+Inheritance. I used this for some divs and header styling.
+Operators. I used this to control the size of some divs.*/
+
+//create basic variables
+$body-font-family: Verdana, Tahoma, sans-serif;
+$body-font-color: #333;
+$body-font-size: 15px;
+$body-font-weight: normal;
+$body-font-style: normal;
+
+// ems to px function
+@function emCalc($pxWidth) {
+    @return $pxWidth / $body-font-size * 1em;
+}
+
+//create mixin
+@mixin setupFont(
+    $family:$body-font-family,
+    $color:$body-font-color,
+    $size:$body-font-size,
+    $weight:$body-font-weight,
+    $style:$body-font-style
+){
+    font:{
+        family: $family;
+        color: $color;
+        size: emCalc($size);
+        weight: $weight;
+        style: $style;
+    }
+}
+
+//body class
+body{
+    @include setupFont;
+    font-size: $body-font-size;
+}
+
+//make text in header twice as large
+header{
+    @include setupFont($size: $body-font-size*2, $color: lighten($body-font-color, 10%), $weight: bold);
+}
