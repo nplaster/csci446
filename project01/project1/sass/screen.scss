@@ -18,10 +18,30 @@ $body-font-color: #333;
 $body-font-size: 15px;
 $body-font-weight: normal;
 $body-font-style: normal;
+$header-footer-color: #FFA500;
 
 // ems to px function
 @function emCalc($pxWidth) {
     @return $pxWidth / $body-font-size * 1em;
+}
+
+//NESTING- I am using SASS nesting to help format my menu bar
+#menu {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: circle;
+  }
+
+  li {
+    display: inline-block;
+    }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: underline;
+  }
 }
 
 //create mixin
@@ -47,7 +67,38 @@ body{
     font-size: $body-font-size;
 }
 
-//make text in header twice as large
-header{
-    @include setupFont($size: $body-font-size*2, $color: lighten($body-font-color, 10%), $weight: bold);
+//make  header the same color as the footer using variables
+#header {
+    background-color: $header-footer-color;
+}
+
+#footer {
+    background-color: $header-footer-color;
+    clear:both;
+    text-align:center;
+}
+
+//css
+#sidebar{
+    float:right;
+}
+
+#menu{
+    background-color:#FFD700;
+    height:200px;
+    width:100px;
+}
+#container {
+    width:100%;
+    height:100%;
+}
+
+#login {
+    width:200px;
+}
+
+#content{
+    height:auto;
+    width:auto;
+    float:left;
 }
