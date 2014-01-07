@@ -2,12 +2,52 @@
 <html>
     <head>
         <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-        <title>Tester</title>
+        <title>New Site Thing</title>
     </head>
     
     <body>
-        <header> I want to see output please! </header>
-        <h1>TESTER</h1>
-        <p>This is a tester </p>
+        <div id="container" style="width:800px">
+
+            <div id="header" style="background-color:#FFA500;">
+                <h1 style="margin-bottom:0;">Main Title of Web Page</h1>
+                <button type="button">News</button>
+                <button type="button">Coffee</button>
+                <button type="button">About</button>
+                <button type="button">Hot</button>
+                <button type="button">Wiki</button>
+            </div>
+            
+            <div id="sidebar" style="float:right;">
+                <div id="login" style="width:200px;">
+                    <form method="get">
+                    <fieldset id=loginarea>	
+                        <input type="text" size=10 placeholder="Username"/>
+                        <input type="text" size=10 placeholder="Password"/> </br>
+                        <input type="checkbox"/>Remember Me
+                        <input type="submit" value="Login" />
+                    </fieldset>
+                    </form>
+                </div>
+            
+                <div id="menu" style="background-color:#FFD700;height:200px;width:100px;">
+                    <b>Menu</b><br>
+                    <img src="coffee.png" alt="Hot Coffee" height="42" width="42">
+                    <ul>
+                        <li><a href="http://www.coffee.com/">Coffee</a></li>
+                        <li><a href="http://www.coffee.com/">Tea</a></li>
+                        <li><a href="http://www.coffee.com/">Milk</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:right;">
+                <h2>Blog</h2>
+                <p>Tons of cool content to be cool</p>
+            </div>
+            
+            <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+                Copyright © Nomes Plasto
+            </div>
+        
+        </div>
     </body>
 </html>
