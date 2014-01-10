@@ -3,16 +3,20 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+//link used for sticky footer http://www.cssstickyfooter.com/using-sticky-footer-code.html
+
 @import "compass/reset";
+//PARTIAL custom font file
+@import "stylesheet";
 
-/*Variables. I used these for widths, fonts, etc.
-Nesting. I nested list items for my menu bar
-Partials. We'll use this feature with custom fonts, explained below.
-Mixins. I just used the border-radius mixin from the SASS guide to style two different items (nav links and submit button).
-Inheritance. I used this for some divs and header styling.
-Operators. I used this to control the size of some divs.*/
+/*Variables. I used these for fonts and colors
+Nesting. I nested list items for my navigation bar
+Partials. I used this feature for my custom font.
+Mixins. I used a mixin to make my font just the way I wanted it for my blog body
+Inheritance. I used this for some of my div and content styling 
+Operators. I used this to control the size of my font by creating an em to px function.*/
 
-//create basic variables
+//VARIABLES created basic variables for my fonts and colors
 $body-font-family: Verdana, Tahoma, sans-serif;
 $body-font-color: #333;
 $body-font-size: 15px;
@@ -20,7 +24,7 @@ $body-font-weight: normal;
 $body-font-style: normal;
 $header-footer-color: #FFA500;
 
-// ems to px function
+//OPERATOR ems to px function
 @function emCalc($pxWidth) {
     @return $pxWidth / $body-font-size * 1em;
 }
@@ -44,7 +48,7 @@ $header-footer-color: #FFA500;
   }
 }
 
-//create mixin
+//MIXIN to setup the font I want for my blog body
 @mixin setupFont(
     $family:$body-font-family,
     $color:$body-font-color,
@@ -61,41 +65,64 @@ $header-footer-color: #FFA500;
     }
 }
 
-//body class
-body{
+//Use of my mixin for blog content
+#content{
     @include setupFont;
     font-size: $body-font-size;
 }
 
+//use of mixin for menu bar with links
+#menu{
+    @include setupFont;
+    font-size: $body-font-size;
+    background-color:#FFD700;
+    height:200px;
+    width:100px;
+}
+
+//INHERITANCE using font style from the content
+h2{
+    @extend #content;
+    font-size: 28px;
+    font-weight: bold;
+}
+    
 //make  header the same color as the footer using variables
 #header {
     height: 70px;
     background-color: $header-footer-color;
     h1, button{
+        font-family: 'brankovicregular';
         margin-top: 20px;
         float: left;
     }
 }
 
-//css
+//plain css3 no sass
+//help with sticky footer
 html, body{
     margin-left: 50px;
     margin-right: 50px;
     height: 100%;
 }
 
+//make two column layout
 #sidebar{
     float:right;
 }
+
+//wraper for sticky footer
 #wrap {
     min-height: 100%;
 }
 
+//conains all of the content but footer
 #container {
     overflow:auto;
     padding-bottom: 50px;
 }  /* must be same height as the footer */
 
+//footer with settings to make sticky
 #footer {
     position: relative;
     margin-top: -50px; /* negative value of footer height */
@@ -104,16 +131,13 @@ html, body{
     text-align:center;
     background-color: $header-footer-color;
 }
-#menu{
-    background-color:#FFD700;
-    height:200px;
-    width:100px;
-}
 
+//login bar slightly bigger than menu
 #login {
     width:200px;
 }
 
+//blog content setting dimensions
 #content{
     height:auto;
     width:auto;
