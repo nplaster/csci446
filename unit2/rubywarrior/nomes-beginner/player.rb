@@ -1,3 +1,6 @@
+#Naomi Plasterer
+#Level 4 used instance variables to store previous health
+
 class Player
   def play_turn(warrior)
     
@@ -5,7 +8,11 @@ class Player
       if (warrior.feel.empty?)
         warrior.walk!
       else
-        warrior.attack!
+        if (warrior.feel.captive?)
+          warrior.rescue!
+        else
+          warrior.attack!
+        end
       end
     @health=warrior.health
     else
@@ -17,7 +24,11 @@ class Player
         end 
       else
         if (warrior.health < @health)
-          warrior.attack!
+          if (warrior.feel.captive?)
+            warrior.rescue!
+          else
+            warrior.attack!
+          end
         else
           warrior.rest!
         end 
