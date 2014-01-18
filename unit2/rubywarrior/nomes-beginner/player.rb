@@ -12,43 +12,20 @@ class Player
   @@wall = false
   
   def play_turn(warrior)
-    if (@@wall == false)
-      if (warrior.feel.wall?)
-        warrior.pivot!
-        @@wall = true
-      elsif (warrior.feel.captive?)
-          warrior.rescue!
-      elsif (warrior.feel.enemy?)
-          warrior.attack!
-      else
-        if (warrior.health == MAXHEALTH)
-          warrior.walk!
-        elsif (warrior.look.any? { |space| space.enemy? })
-          warrior.shoot!
-        else
-          warrior.rest!
-        end
-      end
+    if (warrior.feel.wall?)
+      warrior.pivot!
+      @@wall = true
+    elsif (warrior.feel.captive?)
+        warrior.rescue!
+    elsif (warrior.feel.enemy?)
+        warrior.attack!
     else
-      if (warrior.feel.empty?)
-        if(warrior.health < @health || warrior.health < 15 && @@attacktime < 2)
-          warrior.shoot!
-          @@attacktime = @@attacktime + 1
-        elsif(warrior.health != MAXHEALTH && warrior.health>=@health)
-          warrior.rest!
-        else
-          warrior.walk!
-        end
+      if (warrior.health == MAXHEALTH)
+        warrior.walk!
+      elsif (warrior.look.any? { |space| space.enemy? })
+        warrior.shoot!
       else
-        if (warrior.health <= @health)
-          if (warrior.feel.captive?)
-            warrior.rescue!
-          else
-            warrior.attack!
-          end
-        else
-          warrior.rest!
-        end
+        warrior.rest!
       end
     end
   @health = warrior.health 
