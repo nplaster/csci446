@@ -12,9 +12,8 @@ class Player
   @@attacktime = 0
   def play_turn(warrior)
     if (@@wall == false)
-      if (warrior.feel.wall?)
+      if (warrior.feel(:backward).wall?)
         @@wall = true
-        warrior.pivot!
       else
         if (warrior.feel(:backward).captive?)
           warrior.rescue!(:backward)
@@ -24,17 +23,16 @@ class Player
       end
     else
       if (warrior.feel.empty?)
-        if(warrior.health < @health && @@attacktime < 4)
-          warrior.walk!(:backward)
+        if(warrior.health < @health || warrior.health < 15 && @@attacktime < 2)
+          warrior.shoot!
+          @@attacktime = @@attacktime + 1
         elsif(warrior.health != 20 && warrior.health>=@health)
           warrior.rest!
         else
           warrior.walk!
-          @@attacktime = @@attacktime + 1
-          
         end
       else
-        if (warrior.health < @health)
+        if (warrior.health <= @health)
           if (warrior.feel.captive?)
             warrior.rescue!
           else
