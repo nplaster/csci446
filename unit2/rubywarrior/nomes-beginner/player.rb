@@ -12,11 +12,9 @@ class Player
   @@attacktime = 0
   def play_turn(warrior)
     if (@@wall == false)
-      if (warrior.feel(:backward).empty?)
-        warrior.walk!(:backward)
-      elsif (warrior.feel(:backward).wall?)
+      if (warrior.feel.wall?)
         @@wall = true
-        warrior.walk!
+        warrior.pivot!
       else
         if (warrior.feel(:backward).captive?)
           warrior.rescue!(:backward)
