@@ -8,10 +8,11 @@
 
 class Player
   MAXHEALTH = 20
-  @health = 20
+  @health = nil
   @@wall = false
   
   def play_turn(warrior)
+    #check if you found a wall
     if (warrior.feel.wall?)
       warrior.pivot!
       @@wall = true
@@ -20,14 +21,21 @@ class Player
     elsif (warrior.feel.enemy?)
         warrior.attack!
     else
-      if (warrior.health == MAXHEALTH)
-        warrior.walk!
-      elsif (warrior.look.any? { |space| space.enemy? })
-        warrior.shoot!
-      else
-        warrior.rest!
-      end
+      feelempty(warrior)
     end
-  @health = warrior.health 
+    #set health to previos health
+    @health = warrior.health
+  end
+  
+  #if the warrior feels empty space do the following
+  def feelempty(warrior)
+    if (warrior.health == MAXHEALTH)
+      warrior.walk!
+    #check the array for enemies
+    elsif (warrior.look.any? { |space| space.enemy? })
+      warrior.shoot!
+    else
+      warrior.rest!
+    end
   end
 end
