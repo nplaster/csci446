@@ -11,3 +11,10 @@ two:
   description: MyText
   image_url: MyString
   age: 1
+
+bunny: 
+  name:       Thumper
+  description: 
+    Thumper is a big fun loving rabbit. If you get to know him you'll never be alone.
+  age:       3
+  image_url:   bunny.jpg 
