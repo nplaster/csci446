@@ -1,0 +1,16 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Foster Animal Catalog</h1>
+
+<% @animals.each do |animal| %>
+  <div class="entry">
+    <%= image_tag(animal.image_url) %>
+    <h3><%= animal.name %></h3>
+    <%= sanitize(animal.description) %>
+    <div class="price_line">
+      <span class="age"><%= animal.age %></span>
+    </div>
+  </div>
+<% end %>
