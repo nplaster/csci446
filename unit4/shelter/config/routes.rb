@@ -1,4 +1,6 @@
 Shelter::Application.routes.draw do
+  resources :fosters
+
   get "store/index"
   resources :animals
 
