@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_foster_path(@foster) %> |
-<%= link_to 'Back', fosters_path %>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Your Foster Animals</h2>
+<ul>    
+  <% @foster.line_items.each do |item| %>
+    <li><%= item.animal.name %></li>
+  <% end %>
+</ul>
