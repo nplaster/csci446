@@ -10,7 +10,7 @@
     <h3><%= animal.name %></h3>
     <%= sanitize(animal.description) %>
     <div class="price_line">
-      <span class="age"><%= animal.age %></span>
+      <span class="age">Age: <%= animal.age %> yrs.</span>
       <%= button_to 'Foster', line_items_path(animal_id: animal) %>
     </div>
   </div>

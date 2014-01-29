@@ -5,20 +5,20 @@
   h1 {
     margin: 0;
     padding-bottom: 0.5em;
-    font:  150% sans-serif;
+    font:  150% serif;
     color: #226;
-    border-bottom: 3px dotted #77d;
+    border-bottom: 3px groove #330066;
   }
 
   /* An entry in the store catalog */
   .entry {
     overflow: auto;
     margin-top: 1em;
-    border-bottom: 1px dotted #77d;
+    border-bottom: 2px dashed #330066;
     min-height: 100px;
 
     img {
-      width: 80px;
+      width: 100px;
       margin-right: 5px;
       margin-bottom: 5px;
       position: absolute;
@@ -30,7 +30,7 @@
       margin-left: 100px;
       margin-top: 0;
       margin-bottom: 2px;
-      color: #227;
+      color: #660033;
     }
 
     p, div.price_line {
@@ -44,7 +44,7 @@
     }
 
     .price {
-      color: #44a;
+      color: #660033;
       font-weight: bold;
       margin-right: 3em;
     }
