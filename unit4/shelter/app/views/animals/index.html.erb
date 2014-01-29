@@ -1,6 +1,11 @@
 <h1>Listing animals</h1>
 
 <table>
+<tr>
+  <th><%= sortable "image" %></th>
+  <th><%= sortable "name" %></th>
+  <th><%= sortable "age" %></th>
+</tr>
 <% @animals.each do |animal| %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
     <td>
@@ -11,6 +16,9 @@
         <dt><%= animal.name %></dt>
         <dd><%= truncate(strip_tags(animal.description), length: 80) %></dd>
       </dl>
+    </td>
+    <td>
+      <%= animal.age %>
     </td>
     <td class="list_actions">
       <%= link_to 'Show', animal %><br/>
