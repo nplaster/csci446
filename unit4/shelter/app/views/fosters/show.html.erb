@@ -8,9 +8,13 @@
 By checking the box below you agree to keep and feed this pet for
 the entirety of its foster care time.</p>
 <input type="checkbox" name="foster">Yes I agree
+<% @control = 1%>
 <ul>    
   <% @foster.line_items.each do |item| %>
-    <%= image_tag(item.animal.image_url, class: 'list_image') %>
-    <%= item.animal.name %> <br> 
+    <% if(@control == @foster.line_items.length) %>
+      <%= image_tag(item.animal.image_url, class: 'list_image') %>
+      <%= item.animal.name %> <br>
+    <% end %>
+    <% @control = @control + 1%>
   <% end %>
 </ul>
