@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shelter</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='<%= controller.controller_name %>'>
+    <div id="banner">
+    <%= @page_title || "Animal Shelter" %><!-- <label id="code.depot.e.title"/> -->
+  </div>
+  <div id="columns">
+    <div id="side">
+      <ul>
+        <li><a href="http://localhost:3000">Home</a></li>
+        <li><a href="http://localhost:3000/animals/new">Add New Animal</a></li>
+        <li><a href="http://localhost:3000/animals">View Animals</a></li>
+      </ul>
+    </div>
+    <div id="main">
+  <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

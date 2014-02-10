@@ -1,0 +1,35 @@
+<h1>Listing animals</h1>
+
+<table>
+<tr>
+  <th><%= sortable "image" %></th>
+  <th><%= sortable "name" %></th>
+  <th><%= sortable "age" %></th>
+</tr>
+<% @animals.each do |animal| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td>
+      <%= image_tag(animal.image_url, class: 'list_image') %>
+    </td>
+    <td class="list_description">
+      <dl>
+        <dt><%= animal.name %></dt>
+        <dd><%= truncate(strip_tags(animal.description), length: 80) %></dd>
+      </dl>
+    </td>
+    <td>
+      <%= animal.age %>
+    </td>
+    <td class="list_actions">
+      <%= link_to 'Show', animal %><br/>
+      <%= link_to 'Edit', edit_animal_path(animal) %><br/>
+      <%= link_to 'Destroy', animal, method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Animal', new_animal_path %>
