@@ -1,4 +1,6 @@
 Shelter::Application.routes.draw do
+  resources :considers
+
   resources :line_items
 
   resources :fosters
