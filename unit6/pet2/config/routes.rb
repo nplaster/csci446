@@ -1,4 +1,6 @@
 Shelter::Application.routes.draw do
+  resources :foster_parents
+
   resources :possible_items
 
   resources :considers

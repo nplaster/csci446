@@ -7,7 +7,7 @@
 <p>Your are agreeing to give this animal a good and healthy home.
 By checking the box below you agree to keep and feed this pet for
 the entirety of its foster care time.</p>
-<input type="checkbox" name="foster">Yes I agree
+<%= button_to "Accept", new_foster_parent_path, method: :get %>
 <% @control = 1%>
 <ul>    
   <% @foster.line_items.each do |item| %>
