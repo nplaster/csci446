@@ -52,8 +52,6 @@ end
     end 
 
     assert_response :success
-    assert_select_jquery :html, '#consider' do
-      assert_select 'tr#current_item td', /Programming Ruby 1.9/
     end
   end
 end
