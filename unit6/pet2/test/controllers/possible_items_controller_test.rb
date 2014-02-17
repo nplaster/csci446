@@ -20,7 +20,7 @@ class PossibleItemsControllerTest < ActionController::TestCase
     assert_difference('PossibleItem.count') do
       post :create, animal_id: animals(:bunny).id
     end
-    assert_redirected_to cart_path(assigns(:possible_item).consider)
+    assert_redirected_to consider_path(assigns(:possible_item).consider)
   end
 
   test "should show possible_item" do
