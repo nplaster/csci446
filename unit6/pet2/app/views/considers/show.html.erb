@@ -2,8 +2,15 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 <h2>Animals You are Considering</h2>
-<ul>
+<table>
   <% @consider.possible_items.each do |item| %>
-    <li><%= item.animal.name %></li>
+    <tr>
+      <td><%= image_tag(item.animal.image_url, class: 'list_image')  %></td>
+      <td><%= item.animal.name %></td>
+    </tr>
   <% end %>
-</ul>
+
+</table>
+
+<%= button_to 'Remove Selections', @consider, method: :delete,
+ data: { confirm: 'Are you sure?' } %>

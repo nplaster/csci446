@@ -34,7 +34,7 @@ class PossibleItemsControllerTest < ActionController::TestCase
   end
 
   test "should update possible_item" do
-    patch :update, id: @possible_item, possible_item: { animal_id: @possible_item.animal_id, consider_id: @possible_item.consider_id }
+    patch :update, id: @possible_item, possible_item: { animal_id: @possible_item.animal_id }
     assert_redirected_to possible_item_path(assigns(:possible_item))
   end
 

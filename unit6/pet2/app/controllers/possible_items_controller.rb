@@ -27,11 +27,11 @@ class PossibleItemsController < ApplicationController
   # POST /possible_items.json
   def create
     animal = Animal.find(params[:animal_id])
-    @possible_item = @consider.possible_items.build(animal: animal)
+    @possible_item = @consider.add_animal(animal.id)
 
     respond_to do |format|
       if @possible_item.save
-        format.html { redirect_to @possible_item.consider, notice: 'Possible item was successfully created.' }
+        format.html { redirect_to @possible_item.consider }
         format.json { render action: 'show', status: :created, location: @possible_item }
       else
         format.html { render action: 'new' }
@@ -72,6 +72,6 @@ class PossibleItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def possible_item_params
-      params.require(:possible_item).permit(:animal_id, :consider_id)
+      params.require(:possible_item).permit(:animal_id)
     end
 end
