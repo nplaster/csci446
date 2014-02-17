@@ -12,7 +12,8 @@ Animal.create!(name: 'Thumper',
         Thumper is a big fun loving rabbit. If you get to know him you'll never be alone.
       </p>},
   image_url:   'bunny.jpg',    
-  age: 3)
+  age: 3,
+  status: Available)
 # . . .
 Animal.create!(name: 'Whiskers',
   description:
@@ -20,7 +21,8 @@ Animal.create!(name: 'Whiskers',
         Whiskers is a young loveable kitten. Doesn't like children but has a soft spot for dogs.
       </p>},
   image_url: 'cat.jpg',
-  age: 1)
+  age: 1,
+  status: Available)
 # . . .
 Animal.create!(name: 'Tucker',
   description: 
@@ -29,7 +31,8 @@ Animal.create!(name: 'Tucker',
         big family with kids to play with.
       </p>},
   image_url: 'dog.jpg',
-  age: 4)
+  age: 4,
+  status: Available)
 # . . .
 Animal.create!(name: 'Wrinkly',
   description: 
@@ -38,7 +41,8 @@ Animal.create!(name: 'Wrinkly',
         He is always down to play. Not good with other pets or children.
       </p>},
   image_url: 'elephant.jpg',
-  age: 10)
+  age: 10,
+  status: Fostered)
 # . . .
 
 Animal.create!(name: 'Meowser',
@@ -48,4 +52,5 @@ Animal.create!(name: 'Meowser',
         single cat doesn't not play well with other cats but fine with dogs.
       </p>},
   image_url: 'cat2.jpg',
-  age: 6)
+  age: 6,
+  status: Available)

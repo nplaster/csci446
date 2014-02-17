@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140217065546) do
     t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status_id"
+    t.string  "status_id"
   end
 
   add_index "animals", ["status_id"], name: "index_animals_on_status_id"

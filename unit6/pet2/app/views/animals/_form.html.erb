@@ -27,6 +27,13 @@
     <%= f.label :age %><br>
     <%= f.number_field :age %>
   </div>
+  
+  <div class="field">
+    <%= f.label :status_id %><br>
+    <%= f.select :status_id, Animal::STATUS_TYPES,
+    prompt: 'Select a status' %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
