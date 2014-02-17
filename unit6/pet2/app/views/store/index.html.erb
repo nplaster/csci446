@@ -5,6 +5,7 @@
 <h1>Foster Animal Catalog</h1>
 
 <% @animals.each do |animal| %>
+<% if animal.status_id == 0 %>
   <div class="entry">
     <%= image_tag(animal.image_url) %>
     <h3><%= animal.name %></h3>
@@ -15,4 +16,5 @@
       <%= button_to 'Foster', line_items_path(animal_id: animal) %>
     </div>
   </div>
+<% end %>
 <% end %>

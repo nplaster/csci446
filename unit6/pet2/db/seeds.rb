@@ -13,7 +13,7 @@ Animal.create!(name: 'Thumper',
       </p>},
   image_url:   'bunny.jpg',    
   age: 3,
-  status: Available)
+  status_id: 0)
 # . . .
 Animal.create!(name: 'Whiskers',
   description:
@@ -22,7 +22,7 @@ Animal.create!(name: 'Whiskers',
       </p>},
   image_url: 'cat.jpg',
   age: 1,
-  status: Available)
+  status_id: 0)
 # . . .
 Animal.create!(name: 'Tucker',
   description: 
@@ -32,7 +32,7 @@ Animal.create!(name: 'Tucker',
       </p>},
   image_url: 'dog.jpg',
   age: 4,
-  status: Available)
+  status_id: 0)
 # . . .
 Animal.create!(name: 'Wrinkly',
   description: 
@@ -42,7 +42,7 @@ Animal.create!(name: 'Wrinkly',
       </p>},
   image_url: 'elephant.jpg',
   age: 10,
-  status: Fostered)
+  status_id: 1)
 # . . .
 
 Animal.create!(name: 'Meowser',
@@ -53,4 +53,4 @@ Animal.create!(name: 'Meowser',
       </p>},
   image_url: 'cat2.jpg',
   age: 6,
-  status: Available)
+  status_id: 0)
