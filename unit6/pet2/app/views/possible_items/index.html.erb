@@ -1,0 +1,29 @@
+<h1>Listing possible_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Animal</th>
+      <th>Consider</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @possible_items.each do |possible_item| %>
+      <tr>
+        <td><%= possible_item.animal %></td>
+        <td><%= possible_item.consider %></td>
+        <td><%= link_to 'Show', possible_item %></td>
+        <td><%= link_to 'Edit', edit_possible_item_path(possible_item) %></td>
+        <td><%= link_to 'Destroy', possible_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Possible item', new_possible_item_path %>

@@ -1,8 +1,9 @@
 class Animal < ActiveRecord::Base
     has_many :line_items
+    has_many :possible_items
 
   before_destroy :ensure_not_referenced_by_any_line_item
-
+  before_destroy :ensure_not_referenced_by_any_possible_item
   #...
 
   validates :name, :description, :image_url, presence: true
@@ -22,6 +23,15 @@ class Animal < ActiveRecord::Base
         return true
       else
         errors.add(:base, 'Line Items present')
+        return false
+      end
+    end
+    
+    def ensure_not_referenced_by_any_possible_item
+      if possible_items.empty?
+        return true
+      else
+        errors.add(:base, 'Possible Items present')
         return false
       end
     end

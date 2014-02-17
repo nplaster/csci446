@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Animal:</strong>
+  <%= @possible_item.animal %>
+</p>
+
+<p>
+  <strong>Consider:</strong>
+  <%= @possible_item.consider %>
+</p>
+
+<%= link_to 'Edit', edit_possible_item_path(@possible_item) %> |
+<%= link_to 'Back', possible_items_path %>
