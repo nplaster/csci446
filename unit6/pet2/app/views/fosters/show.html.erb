@@ -8,6 +8,9 @@
 By checking the box below you agree to keep and feed this pet for
 the entirety of its foster care time.</p>
 <%= button_to "Accept", new_foster_parent_path, method: :get %>
+<form action="http://localhost:3000">
+    <input type="submit" value="Cancel">
+</form>
 <% @control = 1%>
 <ul>    
   <% @foster.line_items.each do |item| %>
