@@ -1,3 +1,7 @@
+<% if possible_item == @current_item %>
+<tr id="current_item">
+<% else %>
 <tr>
+<% end %>
 <td><%= possible_item.animal.name %></td>
 </tr>

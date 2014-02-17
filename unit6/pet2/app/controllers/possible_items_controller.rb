@@ -32,6 +32,7 @@ class PossibleItemsController < ApplicationController
     respond_to do |format|
       if @possible_item.save
         format.html { redirect_to store_url }
+        format.js { @current_item = @possible_item }
         format.json { render action: 'show', status: :created, location: @possible_item }
       else
         format.html { render action: 'new' }

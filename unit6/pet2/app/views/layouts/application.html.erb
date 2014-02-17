@@ -12,9 +12,9 @@
   </div>
   <div id="columns">
     <div id="side">
-      <div id="consider">
-       <%= render @consider %>
-      </div>
+      <%= hidden_div_if(@consider.possible_items.empty?, id: 'consider') do %>
+        <%= render @consider %>
+      <% end %>
       <ul>
         <li><a href="http://localhost:3000">Home</a></li>
         <li><a href="http://localhost:3000/animals/new">Add New Animal</a></li>
