@@ -1,4 +1,9 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_consider_path(@consider) %> |
-<%= link_to 'Back', considers_path %>
+<% end %>
+<h2>Animals You are Considering</h2>
+<ul>
+  <% @consider.possible_items.each do |item| %>
+    <li><%= item.animal.name %></li>
+  <% end %>
+</ul>
