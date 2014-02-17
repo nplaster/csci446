@@ -1,0 +1,7 @@
+<h2>Animals You are Considering</h2>
+<table>
+  <%= render(consider.possible_items) %>
+</table>
+
+<%= button_to 'Remove Selections', consider, method: :delete,
+ data: { confirm: 'Are you sure?' } %>
