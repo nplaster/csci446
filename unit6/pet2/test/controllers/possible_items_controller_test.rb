@@ -20,8 +20,8 @@ class PossibleItemsControllerTest < ActionController::TestCase
     assert_difference('PossibleItem.count') do
       post :create, animal_id: animals(:bunny).id
     end
-    assert_redirected_to consider_path(assigns(:possible_item).consider)
-  end
+    assert_redirected_to store_path
+end
 
   test "should show possible_item" do
     get :show, id: @possible_item
@@ -44,5 +44,16 @@ class PossibleItemsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to possible_items_path
+  end
+  
+  test "should create possible_item via ajax" do
+    assert_difference('PossibleItem.count') do
+      xhr :post, :create, animal_id: animals(:bunny).id
+    end 
+
+    assert_response :success
+    assert_select_jquery :html, '#consider' do
+      assert_select 'tr#current_item td', /Programming Ruby 1.9/
+    end
   end
 end

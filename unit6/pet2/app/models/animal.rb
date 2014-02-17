@@ -1,6 +1,7 @@
 class Animal < ActiveRecord::Base
-    has_many :line_items
     has_many :possible_items
+    has_many :line_items
+    
 
   before_destroy :ensure_not_referenced_by_any_line_item
   before_destroy :ensure_not_referenced_by_any_possible_item
