@@ -60,6 +60,16 @@ class AnimalsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def who_bought
+    @animal = Animal.find(params[:id])
+    @latest_foster_parent = @animal.foster_parents.foster_parent(:updated_at).last
+    if stale?(@latest_foster_parent)
+      respond_to do |format|
+        format.atom
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

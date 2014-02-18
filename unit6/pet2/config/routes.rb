@@ -10,7 +10,9 @@ Shelter::Application.routes.draw do
   resources :fosters
 
   get "store/index"
-  resources :animals
+  resources :animals do
+    get :who_bought, on: :member
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

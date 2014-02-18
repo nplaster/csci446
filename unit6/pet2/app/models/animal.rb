@@ -1,6 +1,7 @@
 class Animal < ActiveRecord::Base
     has_many :possible_items
     has_many :line_items
+    has_many :foster_parents, through: :line_items
     
     STATUS_TYPES = [ 0, 1 ]
 
