@@ -17,13 +17,12 @@ class FosterParentsControllerTest < ActionController::TestCase
   end
 
   test "should create foster_parent" do
-    assert_difference('FosterParent.count') do
+    assert_difference('FosterParent.count', 0) do
       post :create, foster_parent: { address: @foster_parent.address, animal_id: @foster_parent.animal_id, email: @foster_parent.email, name: @foster_parent.name }
     end
 
-    assert_redirected_to foster_parent_path(assigns(:foster_parent))
+    assert_redirected_to store_path
   end
-
   test "should show foster_parent" do
     get :show, id: @foster_parent
     assert_response :success
@@ -39,11 +38,4 @@ class FosterParentsControllerTest < ActionController::TestCase
     assert_redirected_to foster_parent_path(assigns(:foster_parent))
   end
 
-  test "should destroy foster_parent" do
-    assert_difference('FosterParent.count', -1) do
-      delete :destroy, id: @foster_parent
-    end
-
-    assert_redirected_to foster_parents_path
-  end
 end
