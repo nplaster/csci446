@@ -27,15 +27,18 @@ class FosterParentsController < ApplicationController
   # POST /foster_parents.json
   def create
     @foster_parent = FosterParent.new(foster_parent_params)
-
+    @foster_parent.add_line_items_from_foster(@foster)
     respond_to do |format|
-      if @foster_parent.save
-        format.html { redirect_to @foster_parent, notice: 'Foster parent was successfully created.' }
+      #if @foster_parent.save
+        Foster.destroy(session[:foster_id])
+        session[:foster_id] = nil
+
+        format.html { redirect_to store_url, notice: 'Thank you for fostering a animal.' }
         format.json { render action: 'show', status: :created, location: @foster_parent }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @foster_parent.errors, status: :unprocessable_entity }
-      end
+      #else
+        #format.html { render action: 'new' }
+        #format.json { render json: @foster_parent.errors, status: :unprocessable_entity }
+      #end
     end
   end
 

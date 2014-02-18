@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Dave Thomas
   address: MyText
-  email: MyString
-  animal_id: MyString
+  email: dave@example.org
+  animal_id: Meowsers
 
 two:
   name: MyString
