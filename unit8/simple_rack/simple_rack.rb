@@ -29,7 +29,8 @@ class SimpleApp
       else
         [404, {"Content-Type" => "text/plain"}, ["Error 404!"]]
       end	# end case
-
+	
+	File.open("footer.html", "r") { |foot| response.write(foot.read) }
       response.finish
     end
 
