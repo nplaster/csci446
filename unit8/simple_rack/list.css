@@ -16,3 +16,9 @@ h1 {
     bottom: 0px;
     width: 100%;
 }
+
+th
+{
+  background-color:green;
+  color:white;
+}

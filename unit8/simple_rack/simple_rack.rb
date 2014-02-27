@@ -46,17 +46,20 @@ class SimpleApp
 		name      = req.GET["info"]
 		info = name + ".csv"
 		#File.open(info, "r") { |book| response.write(book.read) }
-		csv = CSV.open(info , :headers => true).read
+		csv = CSV.open(info , :headers => false).read
 		response.write("<table border='0' cellspacing='5' cellpadding='5'>")
 		response.write("<tr>")
-		csv.headers.each do |head|
-			response.write("<th> #{head} </th>")
-		end 
+		response.write("<th> Rank </th>")
+		response.write("<th> Title </th>")
+		response.write("<th> Author </th>")
+		response.write("<th> Language </th>")
+		response.write("<th> Year </th>")
+		response.write("<th> Copies </th>")
 		response.write("</tr>")
 		csv.each do |row| 
 		  response.write("<tr>")
 		    row.each do |element| 
-		      response.write("<td> #{element[1]} </td>")
+		      response.write("<td> #{element} </td>")
 		    end
 		  response.write("</tr>")
 		end
