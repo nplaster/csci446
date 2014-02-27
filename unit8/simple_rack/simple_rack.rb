@@ -43,6 +43,7 @@ class SimpleApp
 
   # try http://localhost:8080/table?info=books
 	def render_table(req, response)
+		i = 1
 		name      = req.GET["info"]
 		info = name + ".csv"
 		#File.open(info, "r") { |book| response.write(book.read) }
@@ -56,13 +57,16 @@ class SimpleApp
 		response.write("<th> Year </th>")
 		response.write("<th> Copies </th>")
 		response.write("</tr>")
-		csv.each do |row| 
+		csv.each do |row|
 		  response.write("<tr>")
+		  response.write("<td> #{i} </td>")
 		    row.each do |element| 
 		      response.write("<td> #{element} </td>")
 		    end
 		  response.write("</tr>")
+		  i=i+1
 		end
+		
 		response.write("</table>")
 	end
 	
