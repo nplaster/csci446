@@ -16,8 +16,8 @@ class SimpleApp
 		response = Rack::Response.new
     # include the header
 		File.open("header.html", "r") { |head| response.write(head.read) }
+		readfile(request, response)
 		render_form(request, response)
-		render_table(request, response)
 		case env["PATH_INFO"]	
 	
       when /.*?\.css/
@@ -45,7 +45,8 @@ class SimpleApp
 	def render_sort(req, response)
 		whatsort = req.GET["sorting"]
 		sortedlist = @listofbooks.sort{|x,y| x[whatsort.to_i] <=> y[whatsort.to_i]}
-		response.write(sortedlist)
+		@newlist = sortedlist.uniq
+		render_table(req, response)
 	end
 
 	def render_form(req, response)
@@ -62,10 +63,6 @@ class SimpleApp
 
   # try http://localhost:8080/
 	def render_table(req, response)
-		i = 1
-		info = "books.csv"
-		
-		csv = CSV.open(info , :headers => false).read
 		response.write("<table border='0' cellspacing='5' cellpadding='5'>")
 		response.write("<tr>")
 		response.write("<th> Rank </th>")
@@ -75,21 +72,30 @@ class SimpleApp
 		response.write("<th> Year </th>")
 		response.write("<th> Copies </th>")
 		response.write("</tr>")
-		csv.each do |row|
-		  individualbook = []
+		@newlist.each do |book|
 		  response.write("<tr>")
-		  response.write("<td> #{i} </td>")
-		  individualbook.push(i)
-		    row.each do |element|
-		      individualbook.push(element)
-		      response.write("<td> #{element} </td>")
-		    end
-		  @listofbooks.push(individualbook)
+		  book.each do |element|
+			response.write("<td> #{element} </td>")
+		  end
 		  response.write("</tr>")
-		  i=i+1
 		end
 		
 		response.write("</table>")
+	end
+	
+	def readfile(req, response)
+		i = 1
+		info = "books.csv"
+		csv = CSV.open(info , :headers => false).read
+		csv.each do |row|
+			individualbook = []
+			individualbook.push(i)
+			row.each do |element|
+				individualbook.push(element)
+			end
+			@listofbooks.push(individualbook)
+			i=i+1
+		end
 	end
 	
   # try http://localhost:8080/crazy
