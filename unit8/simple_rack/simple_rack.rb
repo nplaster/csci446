@@ -7,6 +7,7 @@ class SimpleApp
 	def initialize()
     # can set up variables that will be needed later
 		@time = Time.now
+		@listofbooks = []
 	end
 
 	def call(env)
@@ -43,15 +44,17 @@ class SimpleApp
 	
 	def render_sort(req, response)
 		whatsort = req.GET["sorting"]
+		sortedlist = @listofbooks.sort{|x,y| x[whatsort.to_i] <=> y[whatsort.to_i]}
+		response.write(sortedlist)
 	end
 
 	def render_form(req, response)
 		response.write("<form action='http://localhost:8080/sort' method='GET'>")
 		response.write("<select name='sorting'>")
-		response.write("<option value='title'>Title</option>")
-		response.write("<option value='author'>Author</option>")
-		response.write("<option value='lang'>Language</option>")
-		response.write("<option value='year'>Year</option>")
+		response.write("<option value='1'>Title</option>")
+		response.write("<option value='2'>Author</option>")
+		response.write("<option value='3'>Language</option>")
+		response.write("<option value='4'>Year</option>")
 		response.write("</select>")
 		response.write("<input type='submit' value='Submit'>")
 		response.write("</form>")
@@ -61,6 +64,7 @@ class SimpleApp
 	def render_table(req, response)
 		i = 1
 		info = "books.csv"
+		
 		csv = CSV.open(info , :headers => false).read
 		response.write("<table border='0' cellspacing='5' cellpadding='5'>")
 		response.write("<tr>")
@@ -72,11 +76,15 @@ class SimpleApp
 		response.write("<th> Copies </th>")
 		response.write("</tr>")
 		csv.each do |row|
+		  individualbook = []
 		  response.write("<tr>")
 		  response.write("<td> #{i} </td>")
-		    row.each do |element| 
+		  individualbook.push(i)
+		    row.each do |element|
+		      individualbook.push(element)
 		      response.write("<td> #{element} </td>")
 		    end
+		  @listofbooks.push(individualbook)
 		  response.write("</tr>")
 		  i=i+1
 		end
