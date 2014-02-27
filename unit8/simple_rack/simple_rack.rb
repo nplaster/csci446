@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'rack'
+require 'csv'
 
 class SimpleApp
 	def initialize()
@@ -15,6 +16,9 @@ class SimpleApp
     # include the header
 		File.open("header.html", "r") { |head| response.write(head.read) }
 		case env["PATH_INFO"]
+			
+		
+	
       when /.*?\.css/
         # serve up a css file
         # remove leading /
@@ -26,6 +30,9 @@ class SimpleApp
       when /\/goofy.*/
         # serve up a list response
         render_goofy(request, response)
+      when /\/table.*/
+        # serve up a list response
+        render_table(request, response)
       else
         [404, {"Content-Type" => "text/plain"}, ["Error 404!"]]
       end	# end case
@@ -34,6 +41,28 @@ class SimpleApp
       response.finish
     end
 
+  # try http://localhost:8080/table?info=books
+	def render_table(req, response)
+		name      = req.GET["info"]
+		info = name + ".csv"
+		#File.open(info, "r") { |book| response.write(book.read) }
+		csv = CSV.open(info , :headers => true).read
+		response.write("<table border='0' cellspacing='5' cellpadding='5'>")
+		response.write("<tr>")
+		csv.headers.each do |head|
+			response.write("<th> #{head} </th>")
+		end 
+		response.write("</tr>")
+		csv.each do |row| 
+		  response.write("<tr>")
+		    row.each do |element| 
+		      response.write("<td> #{element[1]} </td>")
+		    end
+		  response.write("</tr>")
+		end
+		response.write("</table>")
+	end
+	
   # try http://localhost:8080/crazy
 	def render_crazy(req, response)
 		response.write("This is just crazy! #{@time}")
