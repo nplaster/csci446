@@ -51,7 +51,7 @@ class SimpleApp
 
 	def render_form(req, response)
 		response.write("<form action='http://localhost:8080/sort' method='GET'>")
-		response.write("<select name='sorting'>")
+		response.write("<h3>SORT BY: </h3><select name='sorting'>")
 		response.write("<option value='1'>Title</option>")
 		response.write("<option value='2'>Author</option>")
 		response.write("<option value='3'>Language</option>")
