@@ -15,9 +15,9 @@ class SimpleApp
 		response = Rack::Response.new
     # include the header
 		File.open("header.html", "r") { |head| response.write(head.read) }
-		case env["PATH_INFO"]
-			
-		
+		render_form(request, response)
+		render_table(request, response)
+		case env["PATH_INFO"]	
 	
       when /.*?\.css/
         # serve up a css file
@@ -30,9 +30,9 @@ class SimpleApp
       when /\/goofy.*/
         # serve up a list response
         render_goofy(request, response)
-      when /\/table.*/
+      when /\/sort.*/
         # serve up a list response
-        render_table(request, response)
+        render_sort(request, response)
       else
         [404, {"Content-Type" => "text/plain"}, ["Error 404!"]]
       end	# end case
@@ -40,12 +40,27 @@ class SimpleApp
 	File.open("footer.html", "r") { |foot| response.write(foot.read) }
       response.finish
     end
+	
+	def render_sort(req, response)
+		whatsort = req.GET["sorting"]
+	end
 
-  # try http://localhost:8080/table?info=books
+	def render_form(req, response)
+		response.write("<form action='http://localhost:8080/sort' method='GET'>")
+		response.write("<select name='sorting'>")
+		response.write("<option value='title'>Title</option>")
+		response.write("<option value='author'>Author</option>")
+		response.write("<option value='lang'>Language</option>")
+		response.write("<option value='year'>Year</option>")
+		response.write("</select>")
+		response.write("<input type='submit' value='Submit'>")
+		response.write("</form>")
+	end
+
+  # try http://localhost:8080/
 	def render_table(req, response)
 		i = 1
-		name      = req.GET["info"]
-		info = name + ".csv"
+		info = "books.csv"
 		csv = CSV.open(info , :headers => false).read
 		response.write("<table border='0' cellspacing='5' cellpadding='5'>")
 		response.write("<tr>")

@@ -2,6 +2,10 @@ h1 {
   color: blue;
 }
 
+table{
+  margin-bottom: 30px;
+}
+
 #footer
 {
     clear: both;
