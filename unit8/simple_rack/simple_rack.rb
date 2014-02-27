@@ -46,7 +46,6 @@ class SimpleApp
 		i = 1
 		name      = req.GET["info"]
 		info = name + ".csv"
-		#File.open(info, "r") { |book| response.write(book.read) }
 		csv = CSV.open(info , :headers => false).read
 		response.write("<table border='0' cellspacing='5' cellpadding='5'>")
 		response.write("<tr>")
