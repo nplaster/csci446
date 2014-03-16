@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 
 require 'rack'
+require 'erb'
+require 'sqlite3'
 require 'csv'
 
 class SimpleApp
