@@ -9,7 +9,7 @@ class SimpleApp
 	def initialize()
     # can set up variables that will be needed later
 		@whatsort = nil
-		@listofbooks = []
+		#@listofbooks = []
 		@database = SQLite3::Database.new("books.sqlite3.db")
 	end
 
@@ -19,7 +19,7 @@ class SimpleApp
 		response = Rack::Response.new
     # include the header
 		File.open("header.html", "r") { |head| response.write(head.read) }
-		readfile(request, response)
+		#readfile(request, response)
 		render_form(request, response)
 		case env["PATH_INFO"]	
 	
@@ -41,8 +41,9 @@ class SimpleApp
 	
 	def render_sort(req, response)
 		@whatsort = req.GET["sorting"]
-		sortedlist = @listofbooks.sort{|x,y| x[whatsort.to_i] <=> y[whatsort.to_i]}
-		@newlist = sortedlist.uniq
+		#sortedlist = @listofbooks.sort{|x,y| x[whatsort.to_i] <=> y[whatsort.to_i]}
+		#@newlist = sortedlist.uniq
+		#use sql to create table
 		render_table(req, response)
 	end
 
@@ -52,23 +53,23 @@ class SimpleApp
 
   # try http://localhost:8080/
 	def render_table(req, response)
-		response.write(ERB.new(File.read('form.html.erb')).result(binding))
+		response.write(ERB.new(File.read('list.html.erb')).result(binding))
 	end
 	
-	def readfile(req, response)
-		i = 1
-		info = "books.csv"
-		csv = CSV.open(info , :headers => false).read
-		csv.each do |row|
-			individualbook = []
-			individualbook.push(i)
-			row.each do |element|
-				individualbook.push(element)
-			end
-			@listofbooks.push(individualbook)
-			i=i+1
-		end
-	end
+	#def readfile(req, response)
+	#	i = 1
+	#	info = "books.csv"
+	#	csv = CSV.open(info , :headers => false).read
+	#	csv.each do |row|
+	#		individualbook = []
+	#		individualbook.push(i)
+	#		row.each do |element|
+	#			individualbook.push(element)
+	#		end
+	#		@listofbooks.push(individualbook)
+	#		i=i+1
+	#	end
+	#end
 end
 
 
