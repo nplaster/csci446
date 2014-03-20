@@ -41,9 +41,8 @@ class SimpleApp
 	
 	def render_sort(req, response)
 		@whatsort = req.GET["sorting"]
-		
 		#use sql to create table
-		@list_items = list_DB(response, @whatsort)
+		@list_items = list_DB(@whatsort)
 		render_table(req, response)
 	end
 
