@@ -23,21 +23,21 @@ class SimpleApp
 		render_form(request, response)
 		case env["PATH_INFO"]	
 	
-      when /.*?\.css/
-        # serve up a css file
-        # remove leading /
-        file = env["PATH_INFO"][1..-1]
-        return [200, {"Content-Type" => "text/css"}, [File.open(file, "rb").read]]
-      when /\/sort.*/
-        # serve up a list response
-        render_sort(request, response)
-      else
-        [404, {"Content-Type" => "text/plain"}, ["Error 404!"]]
-      end	# end case
-	
-	File.open("footer.html", "r") { |foot| response.write(foot.read) }
-      response.finish
-    end
+		when /.*?\.css/
+		  # serve up a css file
+		  # remove leading /
+		  file = env["PATH_INFO"][1..-1]
+		  return [200, {"Content-Type" => "text/css"}, [File.open(file, "rb").read]]
+		when /\/sort.*/
+		  # serve up a list response
+		  render_sort(request, response)
+		else
+		  [404, {"Content-Type" => "text/plain"}, ["Error 404!"]]
+		end	# end case
+		  
+		  File.open("footer.html", "r") { |foot| response.write(foot.read) }
+		response.finish
+	end
 	
 	def render_sort(req, response)
 		@whatsort = req.GET["sorting"]
