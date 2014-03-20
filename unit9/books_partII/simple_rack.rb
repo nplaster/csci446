@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'sinatra'
 require 'data_mapper'
 DataMapper.setup(:default, 'sqlite:./books.sqlite3.db')
