@@ -7,5 +7,16 @@
     <th> Year </th>
     <th> Copies </th>
   </tr>
-
+  
+  <% for item in @list_items %>
+    <tr>
+      <%= "<td>#{item['rank']}</td>" %>
+      <%= "<td>#{item['title']}</td>" %>
+      <%= "<td>#{item['author']}</td>" %>
+      <%= "<td>#{item['language']}</td>" %>
+      <%= "<td>#{item['year']}</td>" %>
+      <%= "<td>#{item['copies']}</td>" %>
+    </tr>
+  <% end %>
+  
 </table>

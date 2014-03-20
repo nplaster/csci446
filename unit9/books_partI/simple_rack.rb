@@ -9,7 +9,6 @@ class SimpleApp
 	def initialize()
     # can set up variables that will be needed later
 		@whatsort = nil
-		#@listofbooks = []
 		@database = SQLite3::Database.new("books.sqlite3.db")
 	end
 
@@ -41,9 +40,8 @@ class SimpleApp
 	
 	def render_sort(req, response)
 		@whatsort = req.GET["sorting"]
-		#sortedlist = @listofbooks.sort{|x,y| x[whatsort.to_i] <=> y[whatsort.to_i]}
-		#@newlist = sortedlist.uniq
 		#use sql to create table
+		@list_items = list_DB(@whatsort)
 		render_table(req, response)
 	end
 
@@ -56,20 +54,21 @@ class SimpleApp
 		response.write(ERB.new(File.read('list.html.erb')).result(binding))
 	end
 	
-	#def readfile(req, response)
-	#	i = 1
-	#	info = "books.csv"
-	#	csv = CSV.open(info , :headers => false).read
-	#	csv.each do |row|
-	#		individualbook = []
-	#		individualbook.push(i)
-	#		row.each do |element|
-	#			individualbook.push(element)
-	#		end
-	#		@listofbooks.push(individualbook)
-	#		i=i+1
-	#	end
-	#end
+	def list_DB(sort)
+		if (sort == 1)
+			list = "select * from books"
+		elsif (sort == 2)
+			list = "select * from books order by author asc"
+		elsif (sort == 3)
+			list = "select * from books order by language asc"
+		elsif (sort == 4)
+			list = "select * from books order by published asc"
+		else
+			list = "select * from books"
+		end
+		return @database.execute(list)	
+	end
+
 end
 
 
