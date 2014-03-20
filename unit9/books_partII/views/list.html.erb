@@ -1,0 +1,22 @@
+<table border='0' cellspacing='5' cellpadding='5'>
+  <tr>
+    <th> Rank </th>
+    <th> Title </th>
+    <th> Author </th>
+    <th> Language </th>
+    <th> Year </th>
+    <th> Copies </th>
+  </tr>
+  
+  <% for item in @list_items %>
+    <tr>
+      <%= "<td>#{item['id']}</td>" %>
+      <%= "<td>#{item['title']}</td>" %>
+      <%= "<td>#{item['author']}</td>" %>
+      <%= "<td>#{item['language']}</td>" %>
+      <%= "<td>#{item['published']}</td>" %>
+      <%= "<td>#{item['sold']}</td>" %>
+    </tr>
+  <% end %>
+  
+</table>
