@@ -4,11 +4,11 @@ DataMapper.setup(:default, 'sqlite:./books.sqlite3.db')
 require_relative 'Book'
 DataMapper.finalize
 
-get '/form' do
-	"Hello world"
+get '/' do
+	erb :'form.html', :layout => :'layout.html'
 end
 
 post '/list' do
 	@books = Book.all
-	"Hello world"
+	erb :'list.html', :layout => :'layout.html'
 end
