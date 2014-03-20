@@ -55,7 +55,7 @@ class SimpleApp
 		response.write(ERB.new(File.read('list.html.erb')).result(binding))
 	end
 	
-	def list_DB(response, sort)
+	def list_DB(sort)
 		if (sort == '1')
 			list = "select * from books order by title asc"
 		elsif (sort == '2')
