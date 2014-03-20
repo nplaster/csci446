@@ -10,6 +10,7 @@ class SimpleApp
     # can set up variables that will be needed later
 		@whatsort = nil
 		@database = SQLite3::Database.new("books.sqlite3.db")
+		@database.results_as_hash = true
 	end
 
 	def call(env)
@@ -40,8 +41,9 @@ class SimpleApp
 	
 	def render_sort(req, response)
 		@whatsort = req.GET["sorting"]
+		
 		#use sql to create table
-		@list_items = list_DB(@whatsort)
+		@list_items = list_DB(response, @whatsort)
 		render_table(req, response)
 	end
 
@@ -54,14 +56,14 @@ class SimpleApp
 		response.write(ERB.new(File.read('list.html.erb')).result(binding))
 	end
 	
-	def list_DB(sort)
-		if (sort == 1)
-			list = "select * from books"
-		elsif (sort == 2)
+	def list_DB(response, sort)
+		if (sort == '1')
+			list = "select * from books order by title asc"
+		elsif (sort == '2')
 			list = "select * from books order by author asc"
-		elsif (sort == 3)
+		elsif (sort == '3')
 			list = "select * from books order by language asc"
-		elsif (sort == 4)
+		elsif (sort == '4')
 			list = "select * from books order by published asc"
 		else
 			list = "select * from books"
